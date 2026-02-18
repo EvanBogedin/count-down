@@ -6,6 +6,9 @@ const startColor = [32,139,112];
 let currentColor = startColor;
 
 const displayedTime = document.getElementById("displayedTime");
+const c = document.getElementById("myArc");
+const ctx = c.getContext("2d");
+ctx.lineWidth = 5;
 
 
 
@@ -67,13 +70,8 @@ function rgbToCss([r, g, b]) {
 }
 
 function drawArc(amount){
-    const c = document.getElementById("myArc");
-    const ctx = c.getContext("2d");
-
     ctx.clearRect(0, 0, c.width, c.height);
-
     ctx.beginPath();
-    ctx.lineWidth = 5;
     ctx.strokeStyle = rgbToCss(currentColor);//"rgba(250, 50, 50, 1)";
     ctx.arc(200, 200, 100, Math.PI * 2, Math.max(amount, 0.001));
     ctx.stroke();
