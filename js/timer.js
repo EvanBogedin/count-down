@@ -1,7 +1,9 @@
 let duration = 10_000;
 let currentTime = duration
 let start;
+let timerStarted = false;
 
+const sound = new Audio("audio/Chill_Alarm3.mp3");
 const startColor = [32,139,112];
 let currentColor = startColor;
 
@@ -11,16 +13,16 @@ const ctx = c.getContext("2d");
 ctx.lineWidth = 5;
 
 
-
-const sound = new Audio("audio/Chill_Alarm3.mp3");
-
-
 document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("startButton");
 
     btn.addEventListener("click", () => {
-        start = performance.now();
         currentTime = duration;
+
+        if (timerStarted){return;}
+
+        timerStarted = true;
+        start = performance.now();
         const timer = setInterval(() => {
             elapsed = performance.now() - start;
             currentTime -= elapsed;
