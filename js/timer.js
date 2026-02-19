@@ -1,5 +1,5 @@
-let startTime = 10_000;
-let currentTime = startTime
+let duration = 10_000;
+let currentTime = duration
 let start;
 
 const startColor = [32,139,112];
@@ -20,14 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btn.addEventListener("click", () => {
         start = performance.now();
-        currentTime = startTime;
+        currentTime = duration;
         const timer = setInterval(() => {
             elapsed = performance.now() - start;
             currentTime -= elapsed;
-            currentColor = lerpColor([255, 0, 0], startColor, currentTime / startTime);
+            currentColor = lerpColor([255, 0, 0], startColor, currentTime / duration);
             const color = rgbToCss(currentColor);
             document.body.style.background = `linear-gradient(to bottom, rgba(255, 255, 255, 0.295), ${color})`;
-            drawArc(currentTime / startTime * Math.PI * 2);
+            drawArc(currentTime / duration * Math.PI * 2);
             
             if (currentTime <= 0) {
                 clearInterval(timer);
@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     Array.from(btn).forEach(button => {
         button.addEventListener("click", () => {
-            startTime = parseInt(button.value) * 1000;
-            displayedTime.textContent = (startTime / 1000).toFixed(3);
+            duration = parseInt(button.value) * 1000;
+            displayedTime.textContent = (duration / 1000).toFixed(3);
         });
     });
 });
