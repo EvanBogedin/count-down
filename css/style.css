@@ -4,9 +4,11 @@
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
-  min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    min-height: 100dvh;
+
+    min-width: 100%;
 }
 
 body { 
@@ -74,6 +76,7 @@ section {
 
 canvas{
     pointer-events: none;
+    margin: 72px;
 }
 
 button{

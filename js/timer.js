@@ -80,7 +80,7 @@ function drawArc(amount){
     ctx.clearRect(0, 0, c.width, c.height);
     ctx.beginPath();
     ctx.strokeStyle = rgbToCss(currentColor);//"rgba(250, 50, 50, 1)";
-    ctx.arc(200, 200, 100, Math.PI * 2, Math.max(amount, 0.001));
+    ctx.arc(128, 128, 100, Math.PI * 2, Math.max(amount, 0.001));
     ctx.stroke();
 }
 
