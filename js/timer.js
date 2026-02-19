@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (currentTime <= 0) {
                 clearInterval(timer);
                 currentTime = 0;
+                timerStarted = false;
                 navigator.vibrate(500);
                 sound.volume = 0.25;
                 sound.play();
