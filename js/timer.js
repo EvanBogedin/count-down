@@ -2,12 +2,14 @@ let duration = 10_000;
 let currentTime = duration
 let start;
 let timerStarted = false;
+const displayedTime = document.getElementById("displayedTime");
 
+const actx = new (window.AudioContext || window.webkitAudioContext)();
 const sound = new Audio("audio/Chill_Alarm3.mp3");
+
 const startColor = [32,139,112];
 let currentColor = startColor;
 
-const displayedTime = document.getElementById("displayedTime");
 const c = document.getElementById("myArc");
 const ctx = c.getContext("2d");
 ctx.lineWidth = 5;
@@ -20,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
         currentTime = duration;
 
         if (timerStarted){return;}
+
+        actx.resume(); //unlock audio
 
         timerStarted = true;
         start = performance.now();
