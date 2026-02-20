@@ -4,8 +4,6 @@ let start;
 let timerStarted = false;
 const displayedTime = document.getElementById("displayedTime");
 
-const actx = new (window.AudioContext || window.webkitAudioContext)();
-const sound = new Audio("audio/Chill_Alarm3.mp3");
 
 const startColor = [32,139,112];
 let currentColor = startColor;
@@ -13,6 +11,27 @@ let currentColor = startColor;
 const c = document.getElementById("myArc");
 const ctx = c.getContext("2d");
 ctx.lineWidth = 5;
+
+//const sound = new Audio("audio/Chill_Alarm3.mp3");
+let audioBuffer;
+const actx = new (window.AudioContext || window.webkitAudioContext)();
+
+
+const gainNode = actx.createGain();// create gain node for volume control
+gainNode.gain.value = 0.25;// set gain to 25% volume
+gainNode.connect(actx.destination);
+
+const src = actx.createBufferSource();
+
+//decoding audio file to buffer.
+//This avoids the decode delay for subsequent plays.
+//The goal is have small file size and low latency.
+fetch("audio/Chill_Alarm3.mp3")
+  .then(res => res.arrayBuffer())
+  .then(data => actx.decodeAudioData(data))
+  .then(decoded => {
+    audioBuffer = decoded;
+  });
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -40,8 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentTime = 0;
                 timerStarted = false;
                 navigator.vibrate(500);
-                sound.volume = 0.25;
-                sound.play();
+                playSound();
+                //sound.volume = 0.25;
+                //sound.play();
             }
             
             displayedTime.textContent = (currentTime / 1000).toFixed(3);
@@ -83,6 +103,13 @@ function drawArc(amount){
     ctx.arc(128, 128, 100, Math.PI * 2, Math.max(amount, 0.001));
     ctx.stroke();
 }
+
+function playSound() {
+  src.buffer = audioBuffer;
+  src.connect(actx.destination);
+  src.start(0);
+}
+
 
 
 
