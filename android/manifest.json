@@ -1,7 +1,7 @@
 {
   "name": "CountDown PWA",
   "short_name": "CountDown",
-  "start_url": "/count-down",
+  "start_url": "/count-down/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",

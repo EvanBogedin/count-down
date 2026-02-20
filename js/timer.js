@@ -30,7 +30,10 @@ fetch("assets/audio/Chill_Alarm3.mp3")
     audioBuffer = decoded;
   });
 
-if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/sw.js');}
+if ('serviceWorker' in navigator) {
+    //navigator.serviceWorker.register('/sw.js');
+    navigator.serviceWorker.register('/count-down/sw.js', {scope: '/count-down/'});
+}
 
 
 document.addEventListener("DOMContentLoaded", () => {
