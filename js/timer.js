@@ -37,7 +37,9 @@ fetch("audio/Chill_Alarm3.mp3")
 document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("startButton");
 
-    btn.addEventListener("click", () => {
+    //Pointer event is used instead of click so accidental touches do not prevent the timer from starting.
+    btn.addEventListener("pointerdown", e => {
+        e.preventDefault();//removes unwanted behavior.
         currentTime = duration;
 
         if (timerStarted){return;}
@@ -112,11 +114,11 @@ function playSound() {
 }
 
 function goFullscreen() {
-  const elem = document.documentElement; // or any element you want
+  const elem = document.documentElement;
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   } else if (elem.webkitRequestFullscreen) {
-    elem.webkitRequestFullscreen(); // Safari
+    elem.webkitRequestFullscreen();
   }
 }
 
