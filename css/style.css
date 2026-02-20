@@ -6,6 +6,7 @@
 html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
     min-height: 100dvh;
 
     min-width: 100%;
@@ -64,8 +65,8 @@ section {
 
 .buttonContainer{
     position: relative;
-    width: 400px;
-    height: 400px; 
+    width: 256px;
+    height: 256px; 
 }
 
 .buttonContainer > * { 
@@ -76,13 +77,12 @@ section {
 
 canvas{
     pointer-events: none;
-    margin: 72px;
 }
 
 button{
     height: 200px;
     width: 200px;
-    margin: 100px;
+    margin: 28px;
     border:solid;
     border-width: 1px;
     border-radius: 100%;
