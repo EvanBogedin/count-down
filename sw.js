@@ -1,11 +1,11 @@
-const CACHE_NAME = 'count-down-cache-v3';
+const CACHE_NAME = 'count-down-cache-v4';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/timer.js',
-  '/assets/img/HourGlass192.png',
-  '/assets/audio/Chill_Alarm3.mp3'
+  '/count-down/',
+  '/count-down/index.html',
+  '/count-down/css/style.css',
+  '/count-down/js/timer.js',
+  '/count-down/assets/img/HourGlass192.png',
+  '/count-down/assets/audio/Chill_Alarm3.mp3'
 ];
 
 // install
