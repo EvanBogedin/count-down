@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (timerStarted){return;}
 
+        goFullscreen();
         actx.resume(); //unlock audio
 
         timerStarted = true;
@@ -108,6 +109,15 @@ function playSound() {
   src.buffer = audioBuffer;
   src.connect(actx.destination);
   src.start(0);
+}
+
+function goFullscreen() {
+  const elem = document.documentElement; // or any element you want
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen(); // Safari
+  }
 }
 
 
