@@ -30,6 +30,8 @@ fetch("assets/audio/Chill_Alarm3.mp3")
     audioBuffer = decoded;
   });
 
+if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/sw.js');}
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("startButton");
@@ -70,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
 document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementsByClassName("timeButton");
 
@@ -80,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
 
 function lerpColor(a, b, t) {
     const ar = a[0], ag = a[1], ab = a[2];
@@ -92,9 +96,11 @@ function lerpColor(a, b, t) {
     ];
 }
 
+
 function rgbToCss([r, g, b]) {
     return `rgb(${r}, ${g}, ${b})`;
 }
+
 
 function drawArc(amount){
     ctx.clearRect(0, 0, c.width, c.height);
@@ -104,12 +110,14 @@ function drawArc(amount){
     ctx.stroke();
 }
 
+
 function playSound() {
   const src = actx.createBufferSource();
   src.buffer = audioBuffer;
   src.connect(actx.destination);
   src.start(0);
 }
+
 
 function goFullscreen() {
   const elem = document.documentElement;
