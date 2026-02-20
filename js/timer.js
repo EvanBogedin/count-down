@@ -20,13 +20,10 @@ const gainNode = actx.createGain();// create gain node for volume control
 gainNode.gain.value = 0.25;// set gain to 25% volume
 gainNode.connect(actx.destination);
 
-const src = actx.createBufferSource();
-src.buffer = audioBuffer;
-
 //decoding audio file to buffer.
 //This avoids the decode delay for subsequent plays.
 //The goal is have small file size and low latency.
-fetch("audio/Chill_Alarm3.mp3")
+fetch("assets/audio/Chill_Alarm3.mp3")
   .then(res => res.arrayBuffer())
   .then(data => actx.decodeAudioData(data))
   .then(decoded => {
@@ -108,6 +105,8 @@ function drawArc(amount){
 }
 
 function playSound() {
+  const src = actx.createBufferSource();
+  src.buffer = audioBuffer;
   src.connect(actx.destination);
   src.start(0);
 }
